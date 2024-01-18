@@ -13,7 +13,8 @@ function App(){
   const [taskToUpdate, setTaskToUpdate] = useState<Task | null>(null)
   const handleDeleteTask = (id : number) => {
     setTaskList(taskList.filter((task : Task) => task.id !== id))//retorna todos os valores que forem diferentes
-    localStorage.setItem("@TODO-array", JSON.stringify(taskList))
+    const actualDeletedData = taskList.filter((task : Task) => task.id !== id)
+    localStorage.setItem("@TODO-array", JSON.stringify(actualDeletedData))
   }
 
   const showOrHideModal = (display : boolean) : void => {
