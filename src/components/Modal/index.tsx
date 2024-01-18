@@ -7,7 +7,7 @@ interface Props {
 //geralmente um modal tem uma parte que esconde as de trás, uma fade, um background opaco
 const Modal = ({children}: Props) => {
 
-    const closeCloseWithClickOutSide = (event : React.MouseEvent) => {
+    const closeCloseWithClickOutSide = () => {
         const modal = document.querySelector('#modal')
         modal!.classList.add('hide')
     }
