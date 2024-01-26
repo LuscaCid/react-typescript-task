@@ -121,8 +121,8 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
                     max={60}
                     placeholder="mins"
                     id="mins"
-                    value={3}
-                    onChange={e => setMinsTime(Number(e.target.value))}//tanto desta form quanto pela handle
+                    
+                    onChange={e => setMinsTime(e.target.value)}//tanto desta form quanto pela handle
 
                 />
             </div>

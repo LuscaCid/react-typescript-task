@@ -23,3 +23,15 @@ its all for now
 ## updates at the code, 
 
 i'll implements a new thing on main. time to execute the action and an typeof alarm
+
+## aplicativo para a igreja. otimas ideias surgiram nesta conversa com larissa
+
+
+aplicativo para a igreja...
+
+requisitos funcionais iniciais
+
+poder criar ministerios que funcionariam para gerencias as pessoas, os membros e estes
+ministerios terao administradores como o pastor por exemplo.
+
+poder gerenciar tarefas de cada membro da igreja para executar, os horarios dele na igreja
