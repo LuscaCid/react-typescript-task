@@ -22,17 +22,8 @@ export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : Props) => {
                             <h2>{element.title}</h2>
                             <span>Dificuldade: {element.difficult}</span>
                         </div>
-                        <div className="icons">
-                            <div onClick={() => handleEdit(element)}>
-
-                                <FaPencilAlt />
-                            </div>
-                            
-                            <div onClick={() => {handleDeleteTask(element.id)}}>
-                                <FaRegTrashAlt />
-                            </div>
-                            
-                            {
+                        <div className="timeAndIcons">
+                        {
                                 element.minsTime && (
                                     <div className="overclock">
                                         <span>time:</span>
@@ -45,8 +36,20 @@ export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : Props) => {
                                     
                                 )
                             }
+                        <div className="icons">
+                            <div onClick={() => handleEdit(element)}>
+
+                                <FaPencilAlt />
+                            </div>
                             
-                        </div>   
+                            <div onClick={() => {handleDeleteTask(element.id)}}>
+                                <FaRegTrashAlt />
+                            </div>
+                            
+
+                        </div>  
+                        </div>
+                         
                     </div>
                 })}
             </div>   

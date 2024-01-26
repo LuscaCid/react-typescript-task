@@ -14,8 +14,8 @@ interface Props {
 export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: Props) => {
     const [id, setId] = useState<number>(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
-    const [difficultLevel, setDifficultLevel] = useState<null | number>(0)
-    const [minsTime, setMinsTime] = useState<number | null>(null) 
+    const [difficultLevel, setDifficultLevel] = useState<undefined | number>(undefined)
+    const [minsTime, setMinsTime] = useState<number | undefined>(undefined) 
     
     function verifyTitle(taskTitle : string): Task[] {
         const arrWithElement : Task[]= taskList.filter(task => task.title ===taskTitle)
@@ -59,7 +59,10 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
             setTaskTitle(e.target.value)
         } else if(e.target.name == 'diff'){
             setDifficultLevel(parseInt(e.target.value))
-        }  
+        }  else if(e.target.name == "mins") {
+            let valueOfInput : number = Number(e.target.value)
+            if(valueOfInput < 0)setMinsTime('') 
+        }
     }
 
     useEffect(() => {
@@ -109,14 +112,19 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
                 onChange={handleChange}
                 />
             </div>
-            <input 
-            type="number" 
-            max={60}
-            placeholder="mins"
-            id="mins"
-            onChange={e => setMinsTime(Number(e.target.value))}//tanto desta form quanto pela handle
+            <div className="input-wrapper">
+                <label htmlFor="mins">Tempo limite:</label>
+                <input 
+                    type="number" 
+                    max={60}
+                    placeholder="mins"
+                    id="mins"
+                    value={minsTime}
+                    onChange={e => setMinsTime(Number(e.target.value))}//tanto desta form quanto pela handle
 
-            />
+                />
+            </div>
+            
             <button
                 type="submit">
                 {btnTitle}
