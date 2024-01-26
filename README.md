@@ -19,3 +19,7 @@ and open at the port 5173 in your browser...
 ## finisgin project at the deploy respositpry
 
 its all for now
+
+## updates at the code, 
+
+i'll implements a new thing on main. time to execute the action and an typeof alarm

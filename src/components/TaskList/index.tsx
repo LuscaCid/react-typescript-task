@@ -31,6 +31,21 @@ export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : Props) => {
                             <div onClick={() => {handleDeleteTask(element.id)}}>
                                 <FaRegTrashAlt />
                             </div>
+                            
+                            {
+                                element.minsTime && (
+                                    <div className="overclock">
+                                        <span>time:</span>
+                                        <div className="clock">
+                                            <span id="mins">02</span>
+                                            <span id="middle">:</span>
+                                            <span id="secconds">30</span>
+                                        </div>
+                                    </div>
+                                    
+                                )
+                            }
+                            
                         </div>   
                     </div>
                 })}

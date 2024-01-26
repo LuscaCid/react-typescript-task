@@ -15,7 +15,7 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
     const [id, setId] = useState<number>(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
     const [difficultLevel, setDifficultLevel] = useState<null | number>(0)
-    
+    const [minsTime, setMinsTime] = useState<number | null>(null) 
     
     function verifyTitle(taskTitle : string): Task[] {
         const arrWithElement : Task[]= taskList.filter(task => task.title ===taskTitle)
@@ -31,11 +31,22 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
             const confirma = confirm('Já existe uma task com este titulo, deseja prosseguir?')
             if(!confirma)return
         }
-        const newTask : Task = {
+        let newTask : Task;
+        if(minsTime){
+            newTask = {
+                id : Math.round(Math.random()*10000),
+                title : taskTitle,
+                difficult : difficultLevel,
+                minsTime : minsTime
+            }
+        } else {
+            newTask = {
             id : Math.round(Math.random()*10000),
             title : taskTitle,
             difficult : difficultLevel
+            }
         }
+        
         setTaskTitle('')
         setDifficultLevel(0)
         setTaskList!(prevState => [...prevState, newTask ])
@@ -48,7 +59,7 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
             setTaskTitle(e.target.value)
         } else if(e.target.name == 'diff'){
             setDifficultLevel(parseInt(e.target.value))
-        }
+        }  
     }
 
     useEffect(() => {
@@ -98,7 +109,14 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
                 onChange={handleChange}
                 />
             </div>
-            
+            <input 
+            type="number" 
+            max={60}
+            placeholder="mins"
+            id="mins"
+            onChange={e => setMinsTime(Number(e.target.value))}//tanto desta form quanto pela handle
+
+            />
             <button
                 type="submit">
                 {btnTitle}
