@@ -60,8 +60,9 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
         } else if(e.target.name == 'diff'){
             setDifficultLevel(parseInt(e.target.value))
         }  else if(e.target.name == "mins") {
-            let valueOfInput : number = Number(e.target.value)
-            if(valueOfInput < 0)setMinsTime('') 
+            console.log('input mins', e.target.value )
+            //let valueOfInput : number | undefined = Number(e.target.value)
+           // if(valueOfInput < 0)setMinsTime(undefined) 
         }
     }
 
@@ -115,11 +116,12 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
             <div className="input-wrapper">
                 <label htmlFor="mins">Tempo limite:</label>
                 <input 
+                    name="mins"
                     type="number" 
                     max={60}
                     placeholder="mins"
                     id="mins"
-                    value={minsTime}
+                    value={3}
                     onChange={e => setMinsTime(Number(e.target.value))}//tanto desta form quanto pela handle
 
                 />
