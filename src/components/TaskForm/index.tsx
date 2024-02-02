@@ -1,17 +1,10 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Container } from "./style";
-import Task from "../../interfaces/TaskInterface";
+import { Task } from "../../@types/componentsProps";
+import { TaskFormProps } from "../../@types/componentsProps";
 
-interface Props {
-    task? : Task | null //only in modal its real
-    btnTitle : string
-    taskList : Task[]
-    setTaskList : React.Dispatch<React.SetStateAction<Task[]>>
-    handleUpdate?(id : number, title : string | undefined, difficult : number) : void
-    //to perplexo que precisa diss tudo pra tipar
-}
  //vai receber o id do clickado
-export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: Props) => {
+export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: TaskFormProps) => {
     const [id, setId] = useState<number>(0)
     const [taskTitle, setTaskTitle] = useState<string | undefined>('')
     const [difficultLevel, setDifficultLevel] = useState<undefined | number>(undefined)
@@ -122,7 +115,7 @@ export const TaskForm = ({handleUpdate,task ,btnTitle, taskList, setTaskList}: P
                     placeholder="mins"
                     id="mins"
                     
-                    onChange={e => setMinsTime(e.target.value)}//tanto desta form quanto pela handle
+                    onChange={e => setMinsTime(parseInt(e.target.value))}//tanto desta form quanto pela handle
 
                 />
             </div>

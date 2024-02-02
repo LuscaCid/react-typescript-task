@@ -1,15 +1,9 @@
-import Task from "../../interfaces/TaskInterface";
 import { Container } from "./style";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { TaskListProps } from "../../@types/componentsProps";
 
-interface Props {
-    taskList : Task[]
-    handleDeleteTask(id : number) : void
-    handleEdit(task : Task) : void
-}
-
-export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : Props) => {
+export const TaskList = ({handleEdit ,taskList, handleDeleteTask} : TaskListProps) => {
     return (
         <Container>
             {taskList.length > 0 ? (<h1>Minhas Tasks</h1>): (<h1>Não há tarefas cadastradas. O/</h1>)}
